@@ -18,7 +18,7 @@ class CreateAppStoriesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->text('story');
             $table->integer('impression')->unsigned()->default(0);
-            $table->integer('like')->unsigned()->default(0);
+            $table->integer('likes')->unsigned()->default(0);
             $table->boolean('has_media')->default(false);
             $table->enum('privacy', ['public', 'private', 'follower'])->default('public');
             $table->softDeletes();

@@ -21,21 +21,15 @@ class CreateAppUsersTable extends Migration
             $table->string('password');
             $table->string('avatar')->default('no_avatar.jpg');
             $table->string('cover')->default('no_cover.jpg');
-            $table->string('about', 300)->nullable();
+            $table->string('about', 500)->nullable();
             $table->string('contact', 100)->nullable();
             $table->string('location')->nullable();
             $table->enum('gender', ['male', 'female', 'other'])->default('other');
             $table->date('birthday')->nullable();
             $table->enum('privacy', ['public', 'private', 'follower'])->default('public');
-            $table->string('blog_tagline', 100)->default('My Personal Blog');
-            $table->string('blog_sub_tagline', 100)->default('Craft things, share ideas');
-            $table->string('cv_profile', 1000)->nullable();
-            $table->string('cv_advantages', 500)->nullable();
-            $table->string('cv_deficiency', 500)->nullable();
-            $table->boolean('is_activated')->default(false);
-            $table->boolean('is_suspended')->default(false);
-            $table->dateTime('suspended_at')->nullable();
             $table->rememberToken();
+            $table->boolean('is_activated')->default(false);
+            $table->timestamp('suspended_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

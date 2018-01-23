@@ -15,8 +15,8 @@ class CreateShowcaseFields extends Migration
     {
         Schema::create('showcase_fields', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
+            $table->string('field_name');
+            $table->string('field_desc')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -16,8 +16,8 @@ class CreateShowcaseScreenshots extends Migration
         Schema::create('showcase_screenshots', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('portfolio_id')->unsigned();
-            $table->string('source', 300);
-            $table->string('caption', 100);
+            $table->string('source');
+            $table->string('caption', 150)->nullable();
             $table->timestamps();
 
             $table->foreign('portfolio_id')->references('id')->on('showcase_portfolios')->onDelete('cascade');

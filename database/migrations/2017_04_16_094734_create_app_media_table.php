@@ -16,7 +16,6 @@ class CreateAppMediaTable extends Migration
         Schema::create('app_media', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('story_id')->unsigned();
-            $table->string('storage', 100)->default('local');
             $table->string('source', 300);
             $table->string('caption')->nullable();
             $table->string('mime', 100);

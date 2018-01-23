@@ -19,6 +19,7 @@ class CreateShowcaseCollaborators extends Migration
             $table->integer('user_id')->default(0);
             $table->string('name', 50)->nullable();
             $table->string('email', 50)->nullable();
+            $table->string('contact', 50)->nullable();
             $table->string('url')->nullable();
             $table->timestamps();
 

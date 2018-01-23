@@ -16,8 +16,8 @@ class CreateJournalBooks extends Migration
         Schema::create('journal_books', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('title', 100);
-            $table->string('description', 500);
+            $table->string('book_title', 100);
+            $table->string('book_desc', 500);
             $table->softDeletes();
             $table->timestamps();
 

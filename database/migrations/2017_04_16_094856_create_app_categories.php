@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFinanceWallets extends Migration
+class CreateAppCategories extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateFinanceWallets extends Migration
      */
     public function up()
     {
-        Schema::create('finance_wallets', function (Blueprint $table) {
+        Schema::create('app_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('account', 100);
-            $table->string('reference', 50);
-            $table->string('description', 500);
-            $table->string('bank', 50);
-            $table->decimal('balance', 20, 2);
+            $table->integer('parent_id')->default(0);
+            $table->string('slug', 200);
+            $table->string('category', 100);
+            $table->string('category_desc', 500)->nullable();
             $table->softDeletes();
             $table->timestamps();
 
@@ -35,6 +34,6 @@ class CreateFinanceWallets extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('finance_wallets');
+        Schema::dropIfExists('app_categories');
     }
 }

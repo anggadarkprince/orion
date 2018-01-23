@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogCategories extends Migration
+class CreateFinanceAccounts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateBlogCategories extends Migration
      */
     public function up()
     {
-        Schema::create('blog_categories', function (Blueprint $table) {
+        Schema::create('finance_accounts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('parent')->default(0);
-            $table->string('slug', 200);
-            $table->string('name', 100);
-            $table->string('description', 500)->nullable();
+            $table->enum('account_type', ['cash', 'saving', 'checking', 'loan', 'cc', 'online'])->default('cash');
+            $table->string('account_desc', 500)->nullable();
+            $table->string('account_reference', 50);
+            $table->decimal('balance', 20, 2)->default(0);
             $table->softDeletes();
             $table->timestamps();
 
@@ -34,6 +34,6 @@ class CreateBlogCategories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_categories');
+        Schema::dropIfExists('finance_accounts');
     }
 }

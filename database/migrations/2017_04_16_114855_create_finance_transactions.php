@@ -15,17 +15,17 @@ class CreateFinanceTransactions extends Migration
     {
         Schema::create('finance_transactions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('wallet_id')->unsigned();
+            $table->integer('account_id')->unsigned();
             $table->string('title', 100);
-            $table->string('description', 500);
-            $table->dateTime('date');
-            $table->enum('type', ['debit', 'credit', 'untracked']);
+            $table->string('transaction_desc', 500);
+            $table->dateTime('transaction_date');
+            $table->dateTime('location');
+            $table->enum('transaction_type', ['income', 'expense', 'untracked'])->default('expense');
             $table->decimal('amount', 12, 2);
-            $table->decimal('balance', 20, 2);
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('wallet_id')->references('id')->on('finance_wallets')->onDelete('cascade');
+            $table->foreign('account_id')->references('id')->on('finance_accounts')->onDelete('cascade');
         });
     }
 

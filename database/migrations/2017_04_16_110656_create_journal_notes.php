@@ -16,8 +16,8 @@ class CreateJournalNotes extends Migration
         Schema::create('journal_notes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('book_id')->unsigned();
-            $table->string('title', 100);
-            $table->text('content');
+            $table->string('note_title', 100);
+            $table->text('note_content');
             $table->boolean('is_markdown')->default(false);
             $table->boolean('is_starred')->default(false);
             $table->enum('privacy', ['public', 'private', 'follower'])->default('private');

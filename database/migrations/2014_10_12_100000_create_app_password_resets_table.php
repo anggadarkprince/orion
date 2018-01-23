@@ -16,7 +16,6 @@ class CreateAppPasswordResetsTable extends Migration
         Schema::create('app_password_resets', function (Blueprint $table) {
             $table->string('email')->index();
             $table->string('token');
-            $table->integer('expired_at');
             $table->timestamp('created_at')->nullable();
         });
     }

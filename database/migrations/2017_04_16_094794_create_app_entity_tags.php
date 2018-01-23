@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogPostTags extends Migration
+class CreateAppEntityTags extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateBlogPostTags extends Migration
      */
     public function up()
     {
-        Schema::create('blog_post_tags', function (Blueprint $table) {
+        Schema::create('app_entity_tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id')->unsigned();
+            $table->integer('reference')->unsigned();
+            $table->string('table', 100);
             $table->integer('tag_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('post_id')->references('id')->on('blog_posts')->onDelete('cascade');
-            $table->foreign('tag_id')->references('id')->on('blog_tags')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('app_tags')->onDelete('cascade');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateBlogPostTags extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_post_tags');
+        Schema::dropIfExists('app_entity_tags');
     }
 }

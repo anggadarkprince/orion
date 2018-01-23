@@ -18,7 +18,7 @@ class CreateAppComments extends Migration
             $table->integer('reference');
             $table->string('table', 100);
             $table->integer('user_id')->default(0);
-            $table->integer('parent')->default(0);
+            $table->integer('parent_id')->default(0);
             $table->string('name', 100);
             $table->string('email', 50)->nullable();
             $table->string('url')->nullable();

@@ -16,12 +16,10 @@ class CreateShowcaseSchools extends Migration
         Schema::create('showcase_schools', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('name');
-            $table->string('country');
-            $table->string('province');
-            $table->string('city');
+            $table->string('school_name');
+            $table->string('location')->nullable();
             $table->smallInteger('enter');
-            $table->string('graduate', 4)->default('now');
+            $table->smallInteger('graduate')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('app_users')->onDelete('cascade');

@@ -18,7 +18,7 @@ class CreateShowcaseSkills extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('field_id')->unsigned();
             $table->string('expertise', 50);
-            $table->string('description', 300);
+            $table->string('expertise_desc', 300);
             $table->smallInteger('proficiency')->unsigned();
             $table->timestamps();
 

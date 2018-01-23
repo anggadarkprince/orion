@@ -19,9 +19,10 @@ class CreateBlogPosts extends Migration
             $table->string('slug', 300);
             $table->string('title', 170);
             $table->text('content');
-            $table->string('excerpt', 500);
-            $table->integer('view');
-            $table->enum('status', ['published', 'draft']);
+            $table->string('featured')->nullable();
+            $table->integer('views')->default(0);
+            $table->enum('post_type', ['article', 'gallery'])->default('article');
+            $table->enum('status', ['published', 'draft'])->default('draft');
             $table->enum('privacy', ['public', 'private', 'follower'])->default('public');
             $table->softDeletes();
             $table->timestamps();

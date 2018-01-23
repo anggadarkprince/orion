@@ -16,18 +16,14 @@ class CreateAppConversations extends Migration
         Schema::create('app_conversations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('message_id')->unsigned();
-            $table->integer('sender')->unsigned();
-            $table->integer('receiver')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->text('message');
             $table->string('media')->nullable();
             $table->string('mime')->nullable();
-            $table->boolean('is_available_sender')->default(true);
-            $table->boolean('is_available_receiver')->default(true);
             $table->timestamps();
 
             $table->foreign('message_id')->references('id')->on('app_messages')->onDelete('cascade');
-            $table->foreign('sender')->references('id')->on('app_users')->onDelete('cascade');
-            $table->foreign('receiver')->references('id')->on('app_users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('app_users')->onDelete('cascade');
         });
     }
 

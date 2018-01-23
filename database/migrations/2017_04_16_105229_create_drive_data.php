@@ -17,10 +17,10 @@ class CreateDriveData extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
             $table->string('file_name', 300);
-            $table->text('path', 500);
-            $table->integer('parent')->default(0);
+            $table->integer('parent_id')->default(0);
             $table->boolean('is_directory')->default(false);
             $table->boolean('is_private')->default(true);
+            $table->boolean('is_reserved')->default(false);
             $table->string('mime', 100);
             $table->string('access_token', 150);
             $table->integer('download_total')->default(0);

@@ -17,12 +17,11 @@ class CreateShowcaseWorks extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('company');
-            $table->string('role');
-            $table->string('country');
-            $table->string('province');
-            $table->string('city');
+            $table->string('role')->nullable();
+            $table->string('job_desc')->nullable();
+            $table->string('location')->nullable();
             $table->smallInteger('from');
-            $table->string('until', 4)->default('now');
+            $table->smallInteger('until')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('app_users')->onDelete('cascade');

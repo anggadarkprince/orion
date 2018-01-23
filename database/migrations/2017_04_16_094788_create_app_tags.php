@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogTags extends Migration
+class CreateAppTags extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateBlogTags extends Migration
      */
     public function up()
     {
-        Schema::create('blog_tags', function (Blueprint $table) {
+        Schema::create('app_tags', function (Blueprint $table) {
             $table->increments('id');
             $table->string('slug', 200);
-            $table->string('term', 100);
+            $table->string('tag_name', 100);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateBlogTags extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_tags');
+        Schema::dropIfExists('app_tags');
     }
 }

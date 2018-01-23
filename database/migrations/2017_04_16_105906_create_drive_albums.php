@@ -16,7 +16,7 @@ class CreateDriveAlbums extends Migration
         Schema::create('drive_albums', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('title', 100);
+            $table->string('album_title', 100);
             $table->string('description', 500);
             $table->timestamps();
 

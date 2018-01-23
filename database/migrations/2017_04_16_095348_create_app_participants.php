@@ -17,6 +17,7 @@ class CreateAppParticipants extends Migration
             $table->increments('id');
             $table->integer('message_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->boolean('is_active')->default(true);
             $table->boolean('is_moderator')->default(false);
             $table->timestamp('joined_at');
 
