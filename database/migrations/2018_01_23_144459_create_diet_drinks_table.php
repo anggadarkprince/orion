@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShowcaseSkills extends Migration
+class CreateDietDrinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateShowcaseSkills extends Migration
      */
     public function up()
     {
-        Schema::create('showcase_skills', function (Blueprint $table) {
+        Schema::create('diet_drinks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('field_id')->unsigned();
-            $table->string('expertise', 50);
-            $table->string('expertise_desc', 300)->nullable();
-            $table->smallInteger('proficiency')->unsigned();
+            $table->dateTime('date');
+            $table->integer('drink_size');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('app_users')->onDelete('cascade');
-            $table->foreign('field_id')->references('id')->on('showcase_fields')->onDelete('cascade');
         });
     }
 
@@ -34,6 +31,6 @@ class CreateShowcaseSkills extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('showcase_skills');
+        Schema::dropIfExists('diet_drinks');
     }
 }

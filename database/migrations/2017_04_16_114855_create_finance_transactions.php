@@ -19,7 +19,7 @@ class CreateFinanceTransactions extends Migration
             $table->string('title', 100);
             $table->string('transaction_desc', 500);
             $table->dateTime('transaction_date');
-            $table->dateTime('location');
+            $table->string('location');
             $table->enum('transaction_type', ['income', 'expense', 'untracked'])->default('expense');
             $table->decimal('amount', 12, 2);
             $table->softDeletes();
